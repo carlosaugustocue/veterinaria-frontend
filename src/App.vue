@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <div class="page-container">
     <!-- Header Principal -->
     <v-app-bar 
       app 
@@ -26,7 +27,7 @@
               style="cursor: pointer;"
             >
               <h2 class="text-h5 font-weight-bold primary--text mb-0">
-                Sistema Veterinaria
+                VetHumboldt
               </h2>
               <div class="text-caption text-medium-emphasis">
                 Gestión Profesional Veterinaria
@@ -71,7 +72,7 @@
               
               <v-tab 
                 value="citas"
-                @click="navegarProximamente('/citas')"
+                @click="$router.push('/citas')"
                 :class="{ 'v-tab--active': $route.path.startsWith('/citas') }"
               >
                 <v-icon class="mr-2">mdi-calendar-clock</v-icon>
@@ -85,6 +86,14 @@
               >
                 <v-icon class="mr-2">mdi-stethoscope</v-icon>
                 Consultas
+              </v-tab>
+              <v-tab 
+                value="consultas"
+                @click="$router.push('/citas/disponibilidad')"
+                :class="{ 'v-tab--active': $route.path.startsWith('/consultas') }"
+              >
+                <v-icon class="mr-2">mdi-alert-circle</v-icon>
+                Test disponibilidad
               </v-tab>
             </v-tabs>
           </v-col>
@@ -322,15 +331,15 @@
             <div class="contact-info">
               <div class="d-flex align-center mb-2">
                 <v-icon size="18" class="mr-2 text-medium-emphasis">mdi-map-marker</v-icon>
-                <span class="text-body-2">Calle 10 # 15-20</span>
+                <span class="text-body-2">Cl. 6 Nte. #14-26, Armenia, Quindío</span>
               </div>
               <div class="d-flex align-center mb-2">
                 <v-icon size="18" class="mr-2 text-medium-emphasis">mdi-phone</v-icon>
-                <span class="text-body-2">+57 1 234 5678</span>
+                <span class="text-body-2">311 2324283</span>
               </div>
               <div class="d-flex align-center mb-2">
                 <v-icon size="18" class="mr-2 text-medium-emphasis">mdi-email</v-icon>
-                <span class="text-body-2">info@veterinaria.com</span>
+                <span class="text-body-2">vethumboldt@cue.edu.co</span>
               </div>
               <div class="d-flex align-start">
                 <v-icon size="18" class="mr-2 mt-1 text-medium-emphasis">mdi-clock</v-icon>
@@ -392,6 +401,7 @@
         </v-btn>
       </template>
     </v-snackbar> -->
+  </div class="page-container">
   </v-app>
 </template>
 

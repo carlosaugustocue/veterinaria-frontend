@@ -9,7 +9,7 @@
                 <v-card-title class="text-center pa-6 bg-primary">
                   <div class="w-100">
                     <v-icon size="48" color="white" class="mb-2">mdi-paw</v-icon>
-                    <h2 class="text-white">Sistema Veterinaria</h2>
+                    <h2 class="text-white">VetHumboltd</h2>
                     <p class="text-white text-body-2 mb-0">Iniciar Sesión</p>
                   </div>
                 </v-card-title>

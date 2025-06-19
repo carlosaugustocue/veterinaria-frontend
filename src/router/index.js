@@ -2,10 +2,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 
-// Importar vistas
+// Importar vistas públicas
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import RegisterView from '../views/auth/RegisterView.vue'
+
+// Importar vistas protegidas
 import DashboardView from '../views/DashboardView.vue'
 
 // Vistas de Propietarios
@@ -18,6 +20,11 @@ import PacientesView from '../views/PacientesView.vue'
 import PacienteDetalleView from '../views/PacienteDetalleView.vue'
 // import PacienteFormView from '../views/PacienteFormView.vue'
 // import PacienteHistorialView from '../views/PacienteHistorialView.vue'
+
+// Vistas de Citas Médicas
+import CitasView from '../views/CitasView.vue'
+import CitaDetalleView from '../views/CitaDetalleView.vue'
+import CitaFormView from '../views/CitaFormView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -112,15 +119,6 @@ const router = createRouter({
         title: 'Mascotas'
       }
     },
-    // {
-    //   path: '/pacientes/nuevo',
-    //   name: 'paciente-nuevo',
-    //   component: PacienteFormView,
-    //   meta: { 
-    //     requiresAuth: true,
-    //     title: 'Nueva Mascota'
-    //   }
-    // },
     {
       path: '/pacientes/:id',
       name: 'paciente-detalle',
@@ -130,24 +128,57 @@ const router = createRouter({
         title: 'Detalle Mascota'
       }
     },
-    // {
-    //   path: '/pacientes/:id/editar',
-    //   name: 'paciente-editar',
-    //   component: PacienteFormView,
-    //   meta: { 
-    //     requiresAuth: true,
-    //     title: 'Editar Mascota'
-    //   }
-    // },
-    // {
-    //   path: '/pacientes/:id/historial',
-    //   name: 'paciente-historial',
-    //   component: PacienteHistorialView,
-    //   meta: { 
-    //     requiresAuth: true,
-    //     title: 'Historial Médico'
-    //   }
-    // },
+
+    // Rutas de Citas Médicas
+    // En tu src/router/index.js, agrega esta ruta en la sección de Citas Médicas:
+
+// Rutas de Citas Médicas
+{
+  path: '/citas',
+  name: 'citas',
+  component: CitasView,
+  meta: { 
+    requiresAuth: true,
+    title: 'Citas Médicas'
+  }
+},
+{
+  path: '/citas/nueva',
+  name: 'cita-nueva',
+  component: CitaFormView,
+  meta: { 
+    requiresAuth: true,
+    title: 'Nueva Cita'
+  }
+},
+// 👇 NUEVA RUTA PARA TESTING
+{
+  path: '/citas/disponibilidad',
+  name: 'citas-disponibilidad',
+  component: () => import('../views/citas/DisponibilidadTestView.vue'),
+  meta: { 
+    requiresAuth: true,
+    title: 'Test Disponibilidad'
+  }
+},
+{
+  path: '/citas/:id',
+  name: 'cita-detalle',
+  component: CitaDetalleView,
+  meta: { 
+    requiresAuth: true,
+    title: 'Detalle Cita'
+  }
+},
+{
+  path: '/citas/:id/editar',
+  name: 'cita-editar',
+  component: CitaFormView,
+  meta: { 
+    requiresAuth: true,
+    title: 'Editar Cita'
+  }
+},
 
     // Ruta por defecto - redirigir a dashboard si está autenticado, sino a login
     {
